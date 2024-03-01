@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/values/app_assets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -112,6 +113,8 @@ class _MyHomePageState extends State<MyHomePage> {
               '$_counter',
               style: Theme.of(context).textTheme.headlineMedium,
             ),
+            TextButton(
+                onPressed: () {}, child: Image.asset(AppAssets.backIcons))
           ],
         ),
       ),
