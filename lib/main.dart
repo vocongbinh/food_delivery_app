@@ -3,6 +3,7 @@ import 'package:food_delivery_app/pages/home_page.dart';
 import 'package:food_delivery_app/pages/splash_page.dart';
 import 'package:food_delivery_app/routes.dart';
 import 'package:food_delivery_app/values/app_assets.dart';
+import 'package:food_delivery_app/values/app_colors.dart';
 import 'package:get/get.dart';
 
 void main() {
@@ -17,7 +18,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: 'Flutter Demo',
-      initialRoute: Routes.splashPages,
+      debugShowCheckedModeBanner: false,
+      initialRoute: Routes.homePages,
       getPages: [
         GetPage(
             name: Routes.homePages,
@@ -41,7 +43,8 @@ class MyApp extends StatelessWidget {
         //
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
+        fontFamily: 'Sen  ',
         useMaterial3: true,
       ),
     );
