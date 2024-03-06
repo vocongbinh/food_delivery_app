@@ -15,4 +15,5 @@ class AppAssets {
   static const String clockIcon = '${icons}clock_icon.png';
   static const String deliveryIcon = '${icons}delivery_icon.png';
   static const String rateIcon = '${icons}rate_icon.png';
+  static const String closeIcon = '${icons}close_icon.png';
 }

@@ -7,9 +7,11 @@ import 'package:food_delivery_app/models/category.dart';
 import 'package:food_delivery_app/models/dish.dart';
 import 'package:food_delivery_app/models/restaurant.dart';
 import 'package:food_delivery_app/models/user.dart';
+import 'package:food_delivery_app/pages/search_page.dart';
 import 'package:food_delivery_app/pages/splash_page.dart';
 import 'package:food_delivery_app/resources/widgets/categories_item_widget.dart';
 import 'package:food_delivery_app/resources/widgets/header_widget.dart';
+import 'package:food_delivery_app/resources/widgets/notify_widget.dart';
 import 'package:food_delivery_app/resources/widgets/restaurant_item_widget.dart';
 import 'package:food_delivery_app/values/app_assets.dart';
 import 'package:food_delivery_app/values/app_colors.dart';
@@ -68,6 +70,7 @@ class _HomePageState extends State<HomePage> {
     Restaurant restaurant = new Restaurant(
         image: "image", name: "Rose Garden Restaurant", dishes: dishes);
     return Scaffold(
+        resizeToAvoidBottomInset: false,
         appBar: AppBar(
           leading: IconButton(
               icon: Image.asset(AppAssets.menuIcon),
@@ -101,91 +104,79 @@ class _HomePageState extends State<HomePage> {
                   ))
             ],
           ),
-          actions: [
-            Container(
-              margin: EdgeInsets.only(right: 20, top: 10),
-              child: badges.Badge(
-                child: IconButton(
-                  icon: Image.asset(AppAssets.notifyIcon),
-                  onPressed: () {},
-                  style: IconButton.styleFrom(
-                      backgroundColor: AppColors.blackColor),
-                ),
-                badgeContent: Container(
-                  child: Center(
-                    child: Text(
-                      '2',
-                      style: TextStyle(color: AppColors.whiteColor),
-                    ),
-                  ),
-                  padding: EdgeInsets.all(4),
-                ),
-                badgeStyle:
-                    badges.BadgeStyle(badgeColor: AppColors.primaryColor),
-              ),
-            )
-          ],
+          actions: [NotifyWidget()],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16),
-          child: Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                RichText(
-                  text: TextSpan(
-                    text: 'Hey ${user.name}, ',
-                    style: AppStyles.h4,
-                    children: <TextSpan>[
-                      TextSpan(
-                          text: 'Good ${getSession()}!',
-                          style: TextStyle(fontWeight: FontWeight.bold)),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                TextField(
-                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
-                  decoration: InputDecoration(
-                      filled: true,
-                      hintStyle: TextStyle(color: Color(0xff676767)),
-                      fillColor: Color(0xfff6f6f6),
-                      border: OutlineInputBorder(
-                          borderSide: BorderSide.none,
-                          borderRadius: BorderRadius.circular(20)),
-                      hintText: 'Search dishes, restaurants',
-                      prefixIconColor: Color(0xffa0a5ba),
-                      prefixIcon: Image.asset(AppAssets.searchIcon)),
-                ),
-                HeaderWidget('All Categories'),
-                SizedBox(
-                  height: 20,
-                ),
-                Container(
-                    child: Container(
-                  height: 64,
-                  child: ListView.separated(
-                    separatorBuilder: (context, index) => SizedBox(
-                      width: 30,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(16),
+            child: Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  RichText(
+                    text: TextSpan(
+                      text: 'Hey ${user.name}, ',
+                      style: AppStyles.h4,
+                      children: <TextSpan>[
+                        TextSpan(
+                            text: 'Good ${getSession()}!',
+                            style: TextStyle(fontWeight: FontWeight.bold)),
+                      ],
                     ),
-                    scrollDirection: Axis.horizontal,
-                    shrinkWrap: true,
-                    itemCount: categories.length,
-                    itemBuilder: (context, index) {
-                      return CategoryItemWidget(item: categories[index]);
-                    },
                   ),
-                )),
-                SizedBox(
-                  height: 20,
-                ),
-                HeaderWidget('Open Restaurants'),
-                RestaurantItemWidget(
-                  item: restaurant,
-                )
-              ],
+                  SizedBox(
+                    height: 20,
+                  ),
+                  TextField(
+                    onChanged: (value) async {
+                      var data =
+                          await Get.to(() => SearchPage(), arguments: value);
+                      if (data == '') {
+                        searchController.value = TextEditingValue(text: '');
+                      }
+                    },
+                    controller: searchController,
+                    style: TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
+                    decoration: InputDecoration(
+                        filled: true,
+                        hintStyle: TextStyle(color: Color(0xff676767)),
+                        fillColor: Color(0xfff6f6f6),
+                        border: OutlineInputBorder(
+                            borderSide: BorderSide.none,
+                            borderRadius: BorderRadius.circular(20)),
+                        hintText: 'Search dishes, restaurants',
+                        prefixIconColor: Color(0xffa0a5ba),
+                        prefixIcon: Image.asset(AppAssets.searchIcon)),
+                  ),
+                  HeaderWidget('All Categories'),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Container(
+                      child: Container(
+                    height: 64,
+                    child: ListView.separated(
+                      clipBehavior: Clip.none,
+                      separatorBuilder: (context, index) => SizedBox(
+                        width: 30,
+                      ),
+                      scrollDirection: Axis.horizontal,
+                      shrinkWrap: true,
+                      itemCount: categories.length,
+                      itemBuilder: (context, index) {
+                        return CategoryItemWidget(item: categories[index]);
+                      },
+                    ),
+                  )),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  HeaderWidget('Open Restaurants'),
+                  RestaurantItemWidget(
+                    item: restaurant,
+                  )
+                ],
+              ),
             ),
           ),
         ));

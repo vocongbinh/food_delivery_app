@@ -5,4 +5,5 @@ import 'package:get/get.dart';
 class Routes {
   static String splashPages = '/splash';
   static String homePages = '/';
+  static String searchPage = '/search';
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/pages/home_page.dart';
+import 'package:food_delivery_app/pages/search_page.dart';
 import 'package:food_delivery_app/pages/splash_page.dart';
 import 'package:food_delivery_app/routes.dart';
 import 'package:food_delivery_app/values/app_assets.dart';
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
             name: Routes.homePages,
             page: () => HomePage(),
             transition: Transition.leftToRight),
-        GetPage(name: Routes.splashPages, page: () => SplashPage())
+        GetPage(name: Routes.splashPages, page: () => SplashPage()),
+        GetPage(name: Routes.searchPage, page: () => SearchPage()),
       ],
       theme: ThemeData(
         // This is the theme of your application.
