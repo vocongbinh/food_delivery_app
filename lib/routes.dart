@@ -6,4 +6,6 @@ class Routes {
   static String splashPages = '/splash';
   static String homePages = '/';
   static String searchPage = '/search';
+  static String locationPage = '/location';
+  static String searchResultPage = '/searchResult';
 }
