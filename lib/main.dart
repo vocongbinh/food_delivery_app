@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/pages/home_page.dart';
 import 'package:food_delivery_app/pages/location_page.dart';
+import 'package:food_delivery_app/pages/map_page.dart';
 
 import 'package:food_delivery_app/pages/search_page.dart';
 import 'package:food_delivery_app/pages/search_result_page.dart';
@@ -23,7 +24,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.locationPage,
+      initialRoute: Routes.mapPage,
       getPages: [
         GetPage(
             name: Routes.homePages,
@@ -33,6 +34,7 @@ class MyApp extends StatelessWidget {
         GetPage(name: Routes.searchPage, page: () => SearchPage()),
         GetPage(name: Routes.locationPage, page: () => LocationPage()),
         GetPage(name: Routes.searchResultPage, page: () => SearchResultPage()),
+        GetPage(name: Routes.mapPage, page: () => MapPage()),
       ],
       theme: ThemeData(
         // This is the theme of your application.

@@ -27,16 +27,14 @@ class _LocationPageState extends State<LocationPage> {
 
   @override
   Widget build(BuildContext context) {
+    print(locationController.errorDescription.value.isNotEmpty);
+    print(locationController.userLocation.value);
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
-            color: locationController.errorDescription.value.isNotEmpty ||
-                    locationController.userLocation.value == null
-                ? const Color.fromARGB(255, 148, 143, 143)
-                : AppColors.whiteColor),
+        decoration: BoxDecoration(color: AppColors.whiteColor),
         child: Obx(() {
           return locationController.isAccessingLocation.value
               ? Column(

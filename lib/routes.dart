@@ -8,4 +8,5 @@ class Routes {
   static String searchPage = '/search';
   static String locationPage = '/location';
   static String searchResultPage = '/searchResult';
+  static String mapPage = '/map';
 }
