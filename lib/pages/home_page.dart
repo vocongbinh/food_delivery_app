@@ -1,14 +1,9 @@
-import 'dart:math';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:food_delivery_app/models/category.dart';
 import 'package:food_delivery_app/models/dish.dart';
 import 'package:food_delivery_app/models/restaurant.dart';
 import 'package:food_delivery_app/models/user.dart';
 import 'package:food_delivery_app/pages/search_page.dart';
-import 'package:food_delivery_app/pages/splash_page.dart';
 import 'package:food_delivery_app/resources/widgets/categories_item_widget.dart';
 import 'package:food_delivery_app/resources/widgets/header_widget.dart';
 import 'package:food_delivery_app/resources/widgets/notify_widget.dart';
@@ -17,7 +12,6 @@ import 'package:food_delivery_app/values/app_assets.dart';
 import 'package:food_delivery_app/values/app_colors.dart';
 import 'package:food_delivery_app/values/app_styles.dart';
 import 'package:get/get.dart';
-import 'package:badges/badges.dart' as badges;
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
