@@ -8,43 +8,28 @@ import 'package:food_delivery_app/values/app_styles.dart';
 
 class DishItemWidget extends StatelessWidget {
   final Dish item;
-  const DishItemWidget({super.key, required this.item});
+  final bool? showPrice;
+  const DishItemWidget({super.key, required this.item, this.showPrice});
 
   @override
   Widget build(BuildContext context) {
-    return
-        //  Container(
-        //   width: 200,
-        //   height: 100,
-        //   decoration: BoxDecoration(color: Colors.red),
-        //   child: Container(
-        //       // margin: EdgeInsets.only(bottom: 100),
-        //       padding: EdgeInsets.symmetric(ho),
-        //       width: 50,
-        //       height: 84,
-        //       decoration: BoxDecoration(
-        //         borderRadius: BorderRadius.circular(10),
-        //         image: DecorationImage(
-        //             image: AssetImage(AppAssets.testImg), fit: BoxFit.cover),
-        //       )),
-        // );
-
-        Stack(
+    return Stack(
       children: [
         Container(
           width: 150,
-          height: 180,
+          height: showPrice == null ? 180 : 220,
         ),
         Positioned(
           bottom: 0,
           left: 0,
           child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 10),
             width: 150,
-            height: 100,
+            height: showPrice == null ? 100 : 160,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                SizedBox(height: 30),
+                SizedBox(height: showPrice == null ? 30 : 50),
                 Text(
                   item.name,
                   style: AppStyles.h4.copyWith(fontWeight: FontWeight.w600),
@@ -56,6 +41,31 @@ class DishItemWidget extends StatelessWidget {
                       fontWeight: FontWeight.w400, color: Color(0xff646982)),
                   textAlign: TextAlign.center,
                 ),
+                showPrice != null
+                    ? Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text(
+                            item.price.toString(),
+                            style: AppStyles.h4
+                                .copyWith(fontWeight: FontWeight.w600),
+                          ),
+                          IconButton(
+                            icon: Container(
+                              child: Icon(
+                                Icons.add,
+                                color: AppColors.whiteColor,
+                              ),
+                              padding: const EdgeInsets.all(6),
+                              decoration: BoxDecoration(
+                                  color: AppColors.primaryColor,
+                                  borderRadius: BorderRadius.circular(50)),
+                            ),
+                            onPressed: () {},
+                          )
+                        ],
+                      )
+                    : Container()
               ],
             ),
             decoration: BoxDecoration(

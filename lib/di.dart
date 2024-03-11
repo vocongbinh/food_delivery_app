@@ -1,5 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:food_delivery_app/common/network/dio_client.dart';
+import 'package:food_delivery_app/controller/location_controller.dart';
 import 'package:food_delivery_app/data/api/order/order_api.dart';
 import 'package:food_delivery_app/models/auth_controller.dart';
 import 'package:food_delivery_app/models/on_boarding_controller.dart';
@@ -21,6 +22,8 @@ Future<void> init() async {
   Get.lazyPut(() => UserRepository());
   Get.lazyPut(() => OrderRepository(orderApi: Get.find<OrderApi>()));
   //controllers
+  Get.lazyPut(() => LocationController());
+
   Get.lazyPut(() => AuthController(Get.find<OrderRepository>()));
   Get.lazyPut(() => OnBoardingController());
 }

@@ -4,6 +4,7 @@ class AppAssets {
   static const String icons = 'assets/icons/';
   //image
   static const String testImg = '${images}test.webp';
+  static const String locationImg = '${images}location_access.png';
 
   //icon
   static const String backIcon = '${icons}back_icon.png';
@@ -16,4 +17,5 @@ class AppAssets {
   static const String deliveryIcon = '${icons}delivery_icon.png';
   static const String rateIcon = '${icons}rate_icon.png';
   static const String closeIcon = '${icons}close_icon.png';
+  static const String locationIcon = '${icons}location_icon.png';
 }

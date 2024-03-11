@@ -5,4 +5,7 @@ class Routes {
   static String loginPage = '/login';
   static String signUp = '/signup';
   static String onBoardingPage = '/start';
+  static String locationPage = '/location';
+  static String searchResultPage = '/searchResult';
+  static String mapPage = '/map';
 }

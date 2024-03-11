@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/models/dish.dart';
 import 'package:food_delivery_app/models/restaurant.dart';
+import 'package:food_delivery_app/pages/search_result_page.dart';
 import 'package:food_delivery_app/resources/widgets/dish_item_widget.dart';
 import 'package:food_delivery_app/resources/widgets/notify_widget.dart';
 import 'package:food_delivery_app/values/app_assets.dart';
@@ -25,12 +26,12 @@ class _SearchPageState extends State<SearchPage> {
       'Bread',
     ];
     List<Dish> dishes = [
-      Dish(name: 'Burger'),
-      Dish(name: 'Burger'),
-      Dish(name: 'Burger'),
-      Dish(name: 'Burger'),
+      Dish(name: 'Burger', price: 10),
+      Dish(name: 'Burger', price: 10),
+      Dish(name: 'Burger', price: 10),
+      Dish(name: 'Burger', price: 10),
     ];
-    Dish dish = Dish(name: 'Binh');
+    Dish dish = Dish(name: 'Binh', price: 10);
     Restaurant restaurant = new Restaurant(
         image: "image", name: "Rose Garden Restaurant", dishes: dishes);
     return Scaffold(
@@ -109,24 +110,30 @@ class _SearchPageState extends State<SearchPage> {
                     child: ListView.separated(
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
-                          return Container(
-                            padding: EdgeInsets.only(left: 16, right: 16),
-                            child: Center(
-                              child: Text(
-                                recentWords[index],
-                                style: AppStyles.h4,
-                              ),
-                            ),
-                            decoration: BoxDecoration(
-                                color: AppColors.whiteColor,
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                      color: Color.fromARGB(255, 209, 203, 203),
-                                      spreadRadius: 2,
-                                      blurRadius: 8)
-                                ]),
-                          );
+                          return GestureDetector(
+                              onTap: () {
+                                Get.to(() => SearchResultPage(),
+                                    arguments: recentWords[index]);
+                              },
+                              child: Container(
+                                padding: EdgeInsets.only(left: 16, right: 16),
+                                child: Center(
+                                  child: Text(
+                                    recentWords[index],
+                                    style: AppStyles.h4,
+                                  ),
+                                ),
+                                decoration: BoxDecoration(
+                                    color: AppColors.whiteColor,
+                                    borderRadius: BorderRadius.circular(20),
+                                    boxShadow: [
+                                      BoxShadow(
+                                          color: Color.fromARGB(
+                                              255, 209, 203, 203),
+                                          spreadRadius: 2,
+                                          blurRadius: 8)
+                                    ]),
+                              ));
                         },
                         separatorBuilder: (context, index) => SizedBox(
                               width: 30,
