@@ -9,4 +9,7 @@ class Routes {
   static String locationPage = '/location';
   static String searchResultPage = '/searchResult';
   static String mapPage = '/map';
+  static String addLocation = '/addLocation';
+  static String searchLocation = '/searchLocation';
+  static String saveLocation = '/saveLocation';
 }

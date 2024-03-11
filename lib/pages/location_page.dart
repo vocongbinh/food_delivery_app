@@ -27,8 +27,6 @@ class _LocationPageState extends State<LocationPage> {
 
   @override
   Widget build(BuildContext context) {
-    print(locationController.errorDescription.value.isNotEmpty);
-    print(locationController.userLocation.value);
     return Scaffold(
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -101,7 +99,7 @@ class _LocationPageState extends State<LocationPage> {
                           ),
                           ElevatedButton(
                             onPressed: () {
-                              Get.off(() => HomePage());
+                              Get.to(() => HomePage());
                             },
                             child: Padding(
                               padding: const EdgeInsets.symmetric(vertical: 16),

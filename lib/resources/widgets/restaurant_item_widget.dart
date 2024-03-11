@@ -28,8 +28,7 @@ class _RestaurantItemWidgetState extends State<RestaurantItemWidget> {
               borderRadius: BorderRadius.circular(10),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: NetworkImage(
-                    "https://media.tapchitaichinh.vn/images/upload/hoangthuviet/04162019/cua_hang_tien_loi.jpg"),
+                image: AssetImage(AppAssets.testImg),
               ),
             ),
           ),

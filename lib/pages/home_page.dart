@@ -8,6 +8,7 @@ import 'package:food_delivery_app/models/category.dart';
 import 'package:food_delivery_app/models/dish.dart';
 import 'package:food_delivery_app/models/restaurant.dart';
 import 'package:food_delivery_app/models/user.dart';
+import 'package:food_delivery_app/pages/add_location_page.dart';
 import 'package:food_delivery_app/pages/search_page.dart';
 import 'package:food_delivery_app/pages/splash_page.dart';
 import 'package:food_delivery_app/resources/widgets/categories_item_widget.dart';
@@ -47,16 +48,15 @@ String getSession() {
 
 class _HomePageState extends State<HomePage> {
   TextEditingController searchController = TextEditingController();
-  final LocationController locationController =
-      Get.put<LocationController>(LocationController());
+
   @override
   void initState() {
-    LocationService.instance.getUserLocation(locationController);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
+    LocationController locationController = Get.find();
     User user = User(
       name: 'Binh',
       phoneNumber: '097834342',
@@ -96,7 +96,9 @@ class _HomePageState extends State<HomePage> {
                       fontWeight: FontWeight.w600),
                 ),
                 GestureDetector(
-                    onTap: () {},
+                    onTap: () {
+                      Get.to(() => AddLocationPage());
+                    },
                     child: Row(
                       children: [
                         Padding(

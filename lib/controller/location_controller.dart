@@ -15,6 +15,7 @@ class LocationController extends GetxController {
   }
 
   void updateAddress(String data) {
+    print(data);
     address.value = data;
   }
 }

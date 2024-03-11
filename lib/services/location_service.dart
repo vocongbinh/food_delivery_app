@@ -58,12 +58,16 @@ class LocationService {
     final location.LocationData data = await _location.getLocation();
     controller.updateUserLocation(data);
     controller.updateIsAccessingLocation(false);
-    List<Placemark> placeMarks =
-        await placemarkFromCoordinates(data.latitude!, data.longitude!);
+    print(data);
+    try {
+      List<Placemark> placeMarks =
+          await placemarkFromCoordinates(data.latitude!, data.longitude!);
+      String address =
+          "${placeMarks[0].street}, ${placeMarks[0].subAdministrativeArea} ${placeMarks[0].administrativeArea}";
 
-    String address =
-        "${placeMarks[0].street}, ${placeMarks[0].subAdministrativeArea} ${placeMarks[0].administrativeArea}";
-
-    controller.updateAddress(address);
+      controller.updateAddress(address);
+    } catch (e) {
+      print(e);
+    }
   }
 }
