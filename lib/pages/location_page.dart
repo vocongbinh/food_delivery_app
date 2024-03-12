@@ -1,5 +1,4 @@
 import 'package:app_settings/app_settings.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controller/location_controller.dart';
 import 'package:food_delivery_app/pages/home_page.dart';
@@ -17,8 +16,8 @@ class LocationPage extends StatefulWidget {
 }
 
 class _LocationPageState extends State<LocationPage> {
-  final LocationController locationController =
-      Get.put<LocationController>(LocationController());
+  final LocationController locationController = Get.find<LocationController>();
+
   @override
   void initState() {
     LocationService.instance.getUserLocation(locationController);

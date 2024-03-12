@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/models/category.dart';
 import 'package:food_delivery_app/values/app_colors.dart';
@@ -10,7 +9,7 @@ class CategoryItemWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(left: 10, right: 10, top: 6, bottom: 6),
+      padding: EdgeInsets.only(left: 10, right: 10, top: 6, bottom: 6),
       // margin: const EdgeInsets.only(left: 20),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),

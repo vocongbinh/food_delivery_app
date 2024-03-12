@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/pages/add_location_page.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:food_delivery_app/pages/auth/login_page.dart';
+import 'package:food_delivery_app/pages/auth/sign_up_page.dart';
 import 'package:food_delivery_app/pages/home_page.dart';
 import 'package:food_delivery_app/pages/location_page.dart';
 import 'package:food_delivery_app/pages/map_page.dart';
@@ -10,11 +13,14 @@ import 'package:food_delivery_app/pages/search_page.dart';
 import 'package:food_delivery_app/pages/search_result_page.dart';
 import 'package:food_delivery_app/pages/splash_page.dart';
 import 'package:food_delivery_app/routes.dart';
-import 'package:food_delivery_app/values/app_assets.dart';
 import 'package:food_delivery_app/values/app_colors.dart';
 import 'package:get/get.dart';
 
-void main() {
+import 'di.dart' as dependencyInjection;
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await dependencyInjection.init();
   runApp(const MyApp());
 }
 
@@ -59,7 +65,7 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
-        fontFamily: 'Sen',
+        fontFamily: 'Sen  ',
         useMaterial3: true,
       ),
     );
