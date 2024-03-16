@@ -85,6 +85,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: Column(
+          mainAxisSize: MainAxisSize.min,
           children: [
             SizedBox(
               height: 40,

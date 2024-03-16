@@ -11,4 +11,7 @@ class Routes {
   static String addLocation = '/addLocation';
   static String searchLocation = '/searchLocation';
   static String saveLocation = '/saveLocation';
+  static String detailFood = '/detailFood';
+  static String detailRestaurant = '/detailRestaurant';
+  static String cart = '/cart';
 }

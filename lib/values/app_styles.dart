@@ -14,4 +14,14 @@ class AppStyles {
         fontWeight: fontWeight,
         fontFamily: 'Sen');
   }
+
+  static BoxDecoration boxOutline = BoxDecoration(
+      borderRadius: BorderRadius.circular(30),
+      color: AppColors.whiteColor,
+      boxShadow: [
+        BoxShadow(
+            color: Color.fromARGB(255, 209, 203, 203),
+            spreadRadius: 2,
+            blurRadius: 8)
+      ]);
 }

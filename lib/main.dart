@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/pages/add_location_page.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:food_delivery_app/pages/auth/login_page.dart';
 import 'package:food_delivery_app/pages/auth/sign_up_page.dart';
+import 'package:food_delivery_app/pages/cart/cart_widget.dart';
+import 'package:food_delivery_app/pages/food/detail_food_page.dart';
 import 'package:food_delivery_app/pages/home_page.dart';
-import 'package:food_delivery_app/pages/location_page.dart';
+import 'package:food_delivery_app/pages/location/add_location_page.dart';
+import 'package:food_delivery_app/pages/location/location_page.dart';
+import 'package:food_delivery_app/pages/location/saved_location_page.dart';
+import 'package:food_delivery_app/pages/location/search_location_page.dart';
 import 'package:food_delivery_app/pages/map_page.dart';
-import 'package:food_delivery_app/pages/saved_location_page.dart';
-import 'package:food_delivery_app/pages/search_location_page.dart';
-
-import 'package:food_delivery_app/pages/search_page.dart';
-import 'package:food_delivery_app/pages/search_result_page.dart';
+import 'package:food_delivery_app/pages/restaurant/detail_restaurant_page.dart';
+import 'package:food_delivery_app/pages/search/search_page.dart';
+import 'package:food_delivery_app/pages/search/search_result_page.dart';
 import 'package:food_delivery_app/pages/splash_page.dart';
 import 'package:food_delivery_app/routes.dart';
 import 'package:food_delivery_app/values/app_colors.dart';
@@ -33,7 +35,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: false,
-      initialRoute: Routes.locationPage,
+      initialRoute: Routes.cart,
       getPages: [
         GetPage(
             name: Routes.homePages,
@@ -47,6 +49,10 @@ class MyApp extends StatelessWidget {
         GetPage(name: Routes.addLocation, page: () => AddLocationPage()),
         GetPage(name: Routes.searchLocation, page: () => SearchLocationPage()),
         GetPage(name: Routes.saveLocation, page: () => SaveLocationPage()),
+        GetPage(name: Routes.detailFood, page: () => DetailFoodPage()),
+        GetPage(
+            name: Routes.detailRestaurant, page: () => DetailRestaurantPage()),
+        GetPage(name: Routes.cart, page: () => CartWidget()),
       ],
       theme: ThemeData(
         // This is the theme of your application.
@@ -65,7 +71,7 @@ class MyApp extends StatelessWidget {
         // This works for code too, not just values: Most code changes can be
         // tested with just a hot reload.
         colorScheme: ColorScheme.fromSeed(seedColor: AppColors.primaryColor),
-        fontFamily: 'Sen  ',
+        fontFamily: 'Sen',
         useMaterial3: true,
       ),
     );

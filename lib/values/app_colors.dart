@@ -10,4 +10,5 @@ class AppColors {
   static const kLightGrey = Color(0x95D1CECE);
   static const kDarkGrey = Color(0xFF9B9B9B);
   static const bgTextField = Color.fromRGBO(240, 245, 250, 1);
+  static const bgButton = Color(0xffF0F5FA);
 }

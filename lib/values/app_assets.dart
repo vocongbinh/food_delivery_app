@@ -5,6 +5,7 @@ class AppAssets {
   //image
   static const String testImg = '${images}test.webp';
   static const String locationImg = '${images}location_access.png';
+  static const String restaurant = '${images}restaurant.png';
 
   //icon
   static const String backIcon = '${icons}back_icon.png';

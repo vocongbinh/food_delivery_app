@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/models/dish.dart';
 import 'package:food_delivery_app/models/restaurant.dart';
-import 'package:food_delivery_app/pages/search_result_page.dart';
+import 'package:food_delivery_app/pages/search/search_result_page.dart';
 import 'package:food_delivery_app/resources/widgets/dish_item_widget.dart';
 import 'package:food_delivery_app/resources/widgets/notify_widget.dart';
 import 'package:food_delivery_app/values/app_assets.dart';
@@ -108,6 +108,7 @@ class _SearchPageState extends State<SearchPage> {
                   Container(
                     height: 50,
                     child: ListView.separated(
+                        clipBehavior: Clip.none,
                         scrollDirection: Axis.horizontal,
                         itemBuilder: (context, index) {
                           return GestureDetector(
