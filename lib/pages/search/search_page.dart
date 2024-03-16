@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/data/model/dish/dish.dart';
-import 'package:food_delivery_app/models/restaurant.dart';
+import 'package:food_delivery_app/data/model/restaurant/restaurant.dart';
 import 'package:food_delivery_app/pages/search/search_result_page.dart';
 import 'package:food_delivery_app/resources/widgets/dish_item_widget.dart';
 import 'package:food_delivery_app/resources/widgets/notify_widget.dart';

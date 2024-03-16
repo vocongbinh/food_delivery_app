@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:food_delivery_app/data/model/dish/dish.dart';
-import 'package:food_delivery_app/models/restaurant.dart';
+import 'package:food_delivery_app/data/model/restaurant/restaurant.dart';
 import 'package:food_delivery_app/pages/restaurant/widgets/dishes_widget.dart';
 import 'package:food_delivery_app/resources/widgets/back_button_widget.dart';
 import 'package:food_delivery_app/values/app_assets.dart';
@@ -18,11 +18,13 @@ class DetailRestaurantPage extends StatefulWidget {
 }
 
 class _DetailRestaurantPageState extends State<DetailRestaurantPage> {
-  List<Dish> dishes = Get.arguments.dishes;
   int selectedFood = 0;
   @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
+    Restaurant restaurant = Get.arguments;
+    List<Dish> dishes = restaurant.dishes;
+
     return Scaffold(
       appBar: AppBar(
         leading: BackButtonWidget(
@@ -43,12 +45,12 @@ class _DetailRestaurantPageState extends State<DetailRestaurantPage> {
             children: [
               Container(
                 margin: EdgeInsets.only(top: 20, bottom: 40),
-                height: height * 1 / 6,
+                height: height * 1 / 4,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(12),
                     image: DecorationImage(
                       fit: BoxFit.cover,
-                      image: AssetImage(AppAssets.testImg),
+                      image: NetworkImage(restaurant.image),
                     )),
               ),
               Text(

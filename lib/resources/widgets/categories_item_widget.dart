@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/models/category.dart';
+import 'package:food_delivery_app/data/model/category/category.dart';
 import 'package:food_delivery_app/values/app_colors.dart';
 import 'package:food_delivery_app/values/app_styles.dart';
 
 class CategoryItemWidget extends StatelessWidget {
-  final CategoryItem item;
+  final Category item;
   CategoryItemWidget({super.key, required this.item});
   @override
   Widget build(BuildContext context) {

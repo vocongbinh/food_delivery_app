@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controller/location_controller.dart';
-import 'package:food_delivery_app/models/category.dart';
+import 'package:food_delivery_app/data/model/category/category.dart';
 import 'package:food_delivery_app/data/model/dish/dish.dart';
-import 'package:food_delivery_app/models/restaurant.dart';
+import 'package:food_delivery_app/data/model/restaurant/restaurant.dart';
 import 'package:food_delivery_app/models/user.dart';
 import 'package:food_delivery_app/pages/location/add_location_page.dart';
 import 'package:food_delivery_app/pages/search/search_page.dart';
@@ -55,11 +55,11 @@ class _HomePageState extends State<HomePage> {
       name: 'Binh',
       phoneNumber: '097834342',
     );
-    List<CategoryItem> categories = [
-      CategoryItem(image: AppAssets.testImg, name: 'All'),
-      CategoryItem(image: AppAssets.testImg, name: 'All'),
-      CategoryItem(image: AppAssets.testImg, name: 'All'),
-      CategoryItem(image: AppAssets.testImg, name: 'All'),
+    List<Category> categories = [
+      Category(image: AppAssets.testImg, name: 'All'),
+      Category(image: AppAssets.testImg, name: 'All'),
+      Category(image: AppAssets.testImg, name: 'All'),
+      Category(image: AppAssets.testImg, name: 'All'),
     ];
     List<Dish> dishes = [
       Dish(name: 'Burger', price: 10, image: AppAssets.testUrl),
@@ -68,7 +68,9 @@ class _HomePageState extends State<HomePage> {
       Dish(name: 'Burger', price: 10, image: AppAssets.testUrl),
     ];
     Restaurant restaurant = new Restaurant(
-        image: "image", name: "Rose Garden Restaurant", dishes: dishes);
+        image: AppAssets.testUrl,
+        name: "Rose Garden Restaurant",
+        dishes: dishes);
 
     return Obx(() {
       return Scaffold(
