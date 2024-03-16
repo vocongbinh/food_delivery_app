@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:food_delivery_app/models/dish.dart';
+import 'package:food_delivery_app/data/model/dish/dish.dart';
 import 'package:food_delivery_app/resources/widgets/dish_item_widget.dart';
 import 'package:food_delivery_app/values/app_assets.dart';
 import 'package:food_delivery_app/values/app_colors.dart';
@@ -17,7 +17,7 @@ class SearchResultPage extends StatefulWidget {
 }
 
 class _SearchResultPageState extends State<SearchResultPage> {
-  Dish dish = Dish(name: 'Binh', price: 10);
+  Dish dish = Dish(name: 'Binh', price: 10, image: AppAssets.testUrl);
 
   @override
   Widget build(BuildContext context) {

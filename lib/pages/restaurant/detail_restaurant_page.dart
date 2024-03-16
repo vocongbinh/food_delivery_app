@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:food_delivery_app/models/dish.dart';
+import 'package:food_delivery_app/data/model/dish/dish.dart';
 import 'package:food_delivery_app/models/restaurant.dart';
 import 'package:food_delivery_app/pages/restaurant/widgets/dishes_widget.dart';
 import 'package:food_delivery_app/resources/widgets/back_button_widget.dart';

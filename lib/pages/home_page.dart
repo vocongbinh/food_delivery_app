@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controller/location_controller.dart';
 import 'package:food_delivery_app/models/category.dart';
-import 'package:food_delivery_app/models/dish.dart';
+import 'package:food_delivery_app/data/model/dish/dish.dart';
 import 'package:food_delivery_app/models/restaurant.dart';
 import 'package:food_delivery_app/models/user.dart';
 import 'package:food_delivery_app/pages/location/add_location_page.dart';
@@ -62,13 +62,14 @@ class _HomePageState extends State<HomePage> {
       CategoryItem(image: AppAssets.testImg, name: 'All'),
     ];
     List<Dish> dishes = [
-      Dish(name: 'Burger', price: 10),
-      Dish(name: 'Burger', price: 10),
-      Dish(name: 'Burger', price: 10),
-      Dish(name: 'Burger', price: 10),
+      Dish(name: 'Burger', price: 10, image: AppAssets.testUrl),
+      Dish(name: 'Burger', price: 10, image: AppAssets.testUrl),
+      Dish(name: 'Burger', price: 10, image: AppAssets.testUrl),
+      Dish(name: 'Burger', price: 10, image: AppAssets.testUrl),
     ];
     Restaurant restaurant = new Restaurant(
         image: "image", name: "Rose Garden Restaurant", dishes: dishes);
+
     return Obx(() {
       return Scaffold(
           resizeToAvoidBottomInset: false,

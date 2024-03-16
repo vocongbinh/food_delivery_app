@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:food_delivery_app/models/dish.dart';
+import 'package:food_delivery_app/data/model/dish/dish.dart';
 import 'package:food_delivery_app/models/restaurant.dart';
 import 'package:food_delivery_app/pages/search/search_result_page.dart';
 import 'package:food_delivery_app/resources/widgets/dish_item_widget.dart';
@@ -26,12 +26,12 @@ class _SearchPageState extends State<SearchPage> {
       'Bread',
     ];
     List<Dish> dishes = [
-      Dish(name: 'Burger', price: 10),
-      Dish(name: 'Burger', price: 10),
-      Dish(name: 'Burger', price: 10),
-      Dish(name: 'Burger', price: 10),
+      Dish(name: 'Burger', price: 10, image: AppAssets.testUrl),
+      Dish(name: 'Burger', price: 10, image: AppAssets.testUrl),
+      Dish(name: 'Burger', price: 10, image: AppAssets.testUrl),
+      Dish(name: 'Burger', price: 10, image: AppAssets.testUrl),
     ];
-    Dish dish = Dish(name: 'Binh', price: 10);
+    Dish dish = Dish(name: 'Binh', price: 10, image: AppAssets.testUrl);
     Restaurant restaurant = new Restaurant(
         image: "image", name: "Rose Garden Restaurant", dishes: dishes);
     return Scaffold(

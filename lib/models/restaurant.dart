@@ -1,4 +1,4 @@
-import 'package:food_delivery_app/models/dish.dart';
+import 'package:food_delivery_app/data/model/dish/dish.dart';
 import 'package:get/get.dart';
 
 class Restaurant extends GetxController {
