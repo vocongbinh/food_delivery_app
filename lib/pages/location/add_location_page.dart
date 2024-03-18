@@ -2,9 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:food_delivery_app/controller/location_controller.dart';
+import 'package:food_delivery_app/data/api/address/address_api.dart';
 import 'package:food_delivery_app/models/autocomplete_prediction.dart';
 import 'package:food_delivery_app/pages/location/saved_location_page.dart';
 import 'package:food_delivery_app/pages/location/search_location_page.dart';
+import 'package:food_delivery_app/repository/address_repository.dart';
 import 'package:food_delivery_app/resources/utils/networkUtiliti.dart';
 import 'package:food_delivery_app/resources/utils/placeAutoCompele.dart';
 import 'package:food_delivery_app/services/location_service.dart';
@@ -25,7 +27,7 @@ class _AddLocationPageState extends State<AddLocationPage> {
   FocusNode myNode = FocusNode();
   LocationController locationController = Get.find();
   String selectedAddress = '';
-
+  AddressRepository addressRepository = Get.find();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -103,6 +105,33 @@ class _AddLocationPageState extends State<AddLocationPage> {
                         style: AppStyles.h4.copyWith(
                           color: AppColors.subTextColor,
                         )),
+                    FutureBuilder(
+                        future: addressRepository.getAll(),
+                        builder: ((context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return Center(child: CircularProgressIndicator());
+                          } else if (snapshot.hasError) {
+                            return Center(
+                                child: Text('Error: ${snapshot.error}'));
+                          } else {
+                            print(snapshot.data);
+                            return ListView.separated(
+                                itemBuilder: (context, index) {
+                                  return ListTile(
+                                      leading: Icon(
+                                        Icons.location_on,
+                                        color: AppColors.primaryColor,
+                                      ),
+                                      title:
+                                          Text(snapshot.data![index].address));
+                                },
+                                separatorBuilder: (context, index) => SizedBox(
+                                      height: 20,
+                                    ),
+                                itemCount: snapshot.data!.length);
+                          }
+                        }))
                   ],
                 )),
             Positioned(

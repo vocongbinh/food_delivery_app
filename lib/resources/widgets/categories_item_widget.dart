@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/data/model/category/category.dart';
+import 'package:food_delivery_app/data/model/dishType/dish_type.dart';
+import 'package:food_delivery_app/values/app_assets.dart';
 import 'package:food_delivery_app/values/app_colors.dart';
 import 'package:food_delivery_app/values/app_styles.dart';
 
 class CategoryItemWidget extends StatelessWidget {
-  final Category item;
+  final DishType item;
   CategoryItemWidget({super.key, required this.item});
   @override
   Widget build(BuildContext context) {
@@ -21,21 +23,20 @@ class CategoryItemWidget extends StatelessWidget {
                 blurRadius: 8)
           ]),
       child: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             width: 44,
             height: 44,
             child: CircleAvatar(
               radius: 50,
-              backgroundImage: AssetImage(item.image),
+              backgroundImage: AssetImage(AppAssets.testImg),
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(left: 10),
-            child: Text(
-              '${item.name}',
-              style: AppStyles.h4.copyWith(fontWeight: FontWeight.w600),
-            ),
+          Text(
+            '${item.name}',
+            textAlign: TextAlign.center,
+            style: AppStyles.h4.copyWith(fontWeight: FontWeight.w600),
           )
         ],
       ),

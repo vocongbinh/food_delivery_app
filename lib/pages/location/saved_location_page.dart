@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:food_delivery_app/data/model/address/address.dart';
 import 'package:food_delivery_app/pages/location/search_location_page.dart';
+import 'package:food_delivery_app/repository/address_repository.dart';
 import 'package:food_delivery_app/values/app_assets.dart';
 import 'package:food_delivery_app/values/app_colors.dart';
 import 'package:food_delivery_app/values/app_styles.dart';
@@ -19,7 +21,8 @@ class _SaveLocationPageState extends State<SaveLocationPage> {
   String subAddress = '';
   TextEditingController buildingController = TextEditingController();
   TextEditingController gateController = TextEditingController();
-  void saveHandler() {
+  void saveHandler() async {
+    AddressRepository addressRepository = Get.find();
     String building = buildingController.value.text;
     String gate = buildingController.value.text;
     String sub;
@@ -31,6 +34,9 @@ class _SaveLocationPageState extends State<SaveLocationPage> {
       sub = gate;
     } else
       sub = '';
+    String newAddress = '[${sub}], ${address}';
+    Map<String, dynamic> addressObj = {'address': newAddress, 'userId': 4};
+    await addressRepository.addAddress(addressObj);
 
     setState(() {
       address = '[${sub}], ${address}';

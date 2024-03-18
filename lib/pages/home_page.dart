@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/controller/location_controller.dart';
+import 'package:food_delivery_app/data/api/dishType/dish_type_api.dart';
 import 'package:food_delivery_app/data/model/category/category.dart';
 import 'package:food_delivery_app/data/model/dish/dish.dart';
+import 'package:food_delivery_app/data/model/dishType/dish_type.dart';
 import 'package:food_delivery_app/data/model/restaurant/restaurant.dart';
 import 'package:food_delivery_app/models/user.dart';
 import 'package:food_delivery_app/pages/location/add_location_page.dart';
 import 'package:food_delivery_app/pages/search/search_page.dart';
+import 'package:food_delivery_app/repository/dish_type_repository.dart';
+import 'package:food_delivery_app/repository/user_repository.dart';
 import 'package:food_delivery_app/resources/widgets/categories_item_widget.dart';
 import 'package:food_delivery_app/resources/widgets/header_widget.dart';
 import 'package:food_delivery_app/resources/widgets/notify_widget.dart';
@@ -55,11 +59,12 @@ class _HomePageState extends State<HomePage> {
       name: 'Binh',
       phoneNumber: '097834342',
     );
-    List<Category> categories = [
-      Category(image: AppAssets.testImg, name: 'All'),
-      Category(image: AppAssets.testImg, name: 'All'),
-      Category(image: AppAssets.testImg, name: 'All'),
-      Category(image: AppAssets.testImg, name: 'All'),
+    DishTypeRepository dishTypeRepository = Get.find();
+    List<DishType> categories = [
+      DishType(id: 1, name: 'All'),
+      DishType(id: 1, name: 'All'),
+      DishType(id: 1, name: 'All'),
+      DishType(id: 1, name: 'All'),
     ];
     List<Dish> dishes = [
       Dish(name: 'Burger', price: 10, image: AppAssets.testUrl),
@@ -167,22 +172,33 @@ class _HomePageState extends State<HomePage> {
                     SizedBox(
                       height: 20,
                     ),
-                    Container(
-                        child: Container(
-                      height: 64,
-                      child: ListView.separated(
-                        clipBehavior: Clip.none,
-                        separatorBuilder: (context, index) => SizedBox(
-                          width: 30,
-                        ),
-                        scrollDirection: Axis.horizontal,
-                        shrinkWrap: true,
-                        itemCount: categories.length,
-                        itemBuilder: (context, index) {
-                          return CategoryItemWidget(item: categories[index]);
-                        },
-                      ),
-                    )),
+                    FutureBuilder(
+                        future: dishTypeRepository.getAll(),
+                        builder: (context, snapshot) {
+                          if (snapshot.connectionState ==
+                              ConnectionState.waiting) {
+                            return Center(child: CircularProgressIndicator());
+                          } else if (snapshot.hasError) {
+                            return Center(
+                                child: Text('Error: ${snapshot.error}'));
+                          } else
+                            return Container(
+                              height: 64,
+                              child: ListView.separated(
+                                clipBehavior: Clip.none,
+                                separatorBuilder: (context, index) => SizedBox(
+                                  width: 30,
+                                ),
+                                scrollDirection: Axis.horizontal,
+                                shrinkWrap: true,
+                                itemCount: snapshot.data!.length,
+                                itemBuilder: (context, index) {
+                                  return CategoryItemWidget(
+                                      item: snapshot.data![index]);
+                                },
+                              ),
+                            );
+                        }),
                     SizedBox(
                       height: 20,
                     ),
